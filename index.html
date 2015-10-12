@@ -1,106 +1,99 @@
 <head>
-    <style>
-        .word::after {
-            content: " "
-        }
+  <style>
+    .word::after {
+      content: " "
+    }
 
-        .red {
-            color: red;
-        }
+    .red {
+      color: red;
+    }
 
-        .blue {
-            color: blue;
-        }
+    .blue {
+      color: blue;
+    }
 
-        #lyrics {
-            text-align: center;
-            font-family: 'Lato', sans-serif;
-            font-size: 15pt;
-            font-weight: 300;
-            color: #222;
-        }
+    #lyrics {
+      text-align: center;
+      font-family: 'Lato', sans-serif;
+      font-size: 15pt;
+      font-weight: 300;
+      color: #222;
+    }
 
-        span.word {
-            background-color: transparent;
-            transition-duration: 1s;
-            cursor: pointer;
-        }
-        /*span.word:active,
-        span.word:hover {
-            background: rgba(0,0,0,0.18);
-            transition-duration: 0.08s;
-        }*/
+    span.word {
+      background-color: transparent;
+      transition-duration: 1s;
+      cursor: pointer;
+    }
 
-        span.active1 {
-            background: rgba(255, 0, 0, 0.5);
-            transition-duration: 0.08s;
-        }
+    span.active1 {
+      background: rgba(255, 0, 0, 0.5);
+      transition-duration: 0.08s;
+    }
 
-        span.bg1 {
-            background: rgba(255, 0, 0, 0.18);
-            transition-duration: 0.08s;
-        }
+    span.bg1 {
+      background: rgba(255, 0, 0, 0.18);
+      transition-duration: 0.08s;
+    }
 
-        span.active2 {
-            background: rgba(0, 255, 0, 0.5);
-            transition-duration: 0.08s;
-        }
+    span.active2 {
+      background: rgba(0, 255, 0, 0.5);
+      transition-duration: 0.08s;
+    }
 
-        span.bg2 {
-            background: rgba(0, 255, 0, 0.18);
-            transition-duration: 0.08s;
-        }
+    span.bg2 {
+      background: rgba(0, 255, 0, 0.18);
+      transition-duration: 0.08s;
+    }
 
-        span.active0 {
-            background: rgba(0, 0, 255, 0.5);
-            transition-duration: 0.08s;
-        }
+    span.active0 {
+      background: rgba(0, 0, 255, 0.5);
+      transition-duration: 0.08s;
+    }
 
-        span.bg0 {
-            background: rgba(0, 0, 255, 0.18);
-            transition-duration: 0.08s;
-        }
+    span.bg0 {
+      background: rgba(0, 0, 255, 0.18);
+      transition-duration: 0.08s;
+    }
 
-        #lyrics {
-            /*display:none;*/
-        }
+    #lyrics {
+      /*display:none;*/
+    }
 
-        .line {
-            opacity:0.6;
-            transition-duration:1s;
-        }
+    .line {
+      opacity: 0.6;
+      transition-duration: 1s;
+    }
 
-        .activeline {
-            opacity: 1;
-            background: rgba(255,0,0,0.3);
-            transition-duration:0.2s;
-        }
-    </style>
+    .activeline {
+      opacity: 1;
+      background: rgba(255, 0, 0, 0.3);
+      transition-duration: 0.2s;
+    }
+  </style>
 </head>
 
 <body>
-    <h1 id="word"></h1>
-    <div id="player"></div>
-    <div id="lyrics"></div>
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
-    <script src='/pronunciation.js'></script>
-    <script src='/analysis.js'></script>
-    <script src='/updater.js'></script>
-    <script src='/loader.js'></script>
-    <script src='/fun.js'></script>
-    <script>
-        var loaded=0;
-        $(function() {
-            $("body").click(function() {
-                if(!loaded) {
-                    loaded=1;
-                    pickVideos(getVideos("lose yourself eminem"));
-                    delay = -1.0;
-                }
-                // createLine();
-            })
-        })
-    </script>
+  <h1 id="word"></h1>
+  <div id="player"></div>
+  <div id="lyrics"></div>
+  <script src="https://www.youtube.com/iframe_api"></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+  <script src='/pronunciation.js'></script>
+  <script src='/apikey.js'></script>
+  <script src='/analysis.js'></script>
+  <script src='/updater.js'></script>
+  <script src='/loader.js'></script>
+  <script src='/fun.js'></script>
+  <script>
+    var loaded = 0;
+    $(function() {
+      if (!loaded) {
+        loaded = 1;
+        pickVideos(getVideos("lose yourself eminem"));
+        delay = -1.7;
+      }
+    })
+  </script>
 </body>
