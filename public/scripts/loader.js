@@ -1,3 +1,4 @@
+var PLAYER;
 var playerState = {
   last_time: 0,
   last_updated: 0
@@ -71,13 +72,15 @@ var createPlayer = function(id) {
   // Autoplay (triggering the onPlayerStateChange)
   var onPlayerReady = function(event) {
     event.target.playVideo();
+    scrollLoop();
+
   }
 
   // Initialize update loop for YouTube player for accurate timing
   var onPlayerStateChange = function(event) {
     if (event.data == YT.PlayerState.PLAYING) { // If now playing
       updateLoop = setInterval(function() {
-        var time = player.getCurrentTime(); // Get current player time (not updated often)
+        var time = PLAYER.getCurrentTime(); // Get current player time (not updated often)
         if (time == playerState.last_time) { // Check if time was not updated
           time += (new Date() - playerState.last_updated) / 1000; // Add elapsed time to player time
         } else { // If player time was correctly updated, update last_time and last_updated
@@ -91,7 +94,7 @@ var createPlayer = function(id) {
     }
   }
 
-  var player = new YT.Player('player', {
+ PLAYER = new YT.Player('player', {
     height: '390',
     width: '640',
     videoId: id,
@@ -100,6 +103,8 @@ var createPlayer = function(id) {
       'onStateChange': onPlayerStateChange
     },
   });
+  if(id == '_Yhyp-_hX2s') delay = -1.8
+  else if (id == 'xufJHc2EdBA') delay = 1;
 }
 
 var createLyrics = function(id) {
@@ -118,8 +123,47 @@ var createLyrics = function(id) {
       $newword.attr("data-local-num", j);
       $newword.attr("data-global-num", j + counter);
       $newline.append($newword);
+      $newword.click(function() {
+        PLAYER.seekTo(TIMES[Number($(this).attr("data-global-num"))]);
+      })
     });
     counter += words.length;
     $lyrics.append($newline);
   });
+
+
+
+
+
+
+
+  $("#lyrics").scroll(function() {
+    shouldScroll = 1;
+    clearInterval(scrollinterval);
+    scrollLoop();
+
+  })
+
 }
+var shouldScroll = 0;
+var scroll = function() {
+  var current = currentWord(playerState.last_time);
+  var line = $("[data-global-num=" + current + "]").parent().attr("data-line-num");
+  $("#lyrics").animate({
+    scrollTop: $("[data-line-num=" + line + "]")[0].offsetTop - $("#lyrics").height() * 0.4
+  }, 80)
+}
+var scrollLoop = function() {
+  console.log("scrollLoop")
+
+  if(shouldScroll % 6 == 0) {
+    scroll();
+    shouldScroll = 0;
+  } else {
+    shouldScroll++;
+  }
+  scrollinterval = setTimeout(scrollLoop, 1000);
+
+}
+
+var scrollinterval;

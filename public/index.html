@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>RhymeGenius</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <link rel="stylesheet" href="/css/main.css">
+
+</head>
+
+<body>
+
+  <div class="intro-header">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12">
+                  <div class="intro-message">
+                      <h1>RhymeGenius</h1>
+                      <div class="form-group">
+                        <div class="input-group" id="search-anim">
+                          <span class="input-group-addon" id="search-btn"><span class=" glyphicon glyphicon-music"></span></span>
+                          <input type="text" class="form-control" placeholder="Search songs..." id="search-box">
+                        </div>
+                      </div>
+                      <!-- <div class="search-anim">
+                        <input id="search-box"></input>
+                        <button class="glyphicon glyphicon-music img-circle" id="search-btn" </button>
+                      </div> -->
+                  </div>
+              </div>
+          </div>
+
+      </div>
+
+
+  </div>
+
+  <div id="player"></div>
+  <div id="lyrics"></div>
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+
+    <!-- endbower -->
+    <!-- endbuild -->
+    <script src="/scripts/ui/velocity.min.js"></script>
+    <script src="/scripts/ui/jquery.ba-throttle-debounce.min.js"></script>
+    <script src="/scripts/ui/search-anim.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js'></script>
+    <script src='/scripts/pronunciation.js'></script>
+    <script src='/scripts/apikey.js'></script>
+    <script src='/scripts/analysis.js'></script>
+    <script src='/scripts/updater.js'></script>
+    <script src='/scripts/loader.js'></script>
+    <script src='/scripts/fun.js'></script>
+</body>
+
+</html>
